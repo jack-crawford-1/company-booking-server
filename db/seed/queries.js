@@ -23,7 +23,6 @@ export const createTimeslotsTable = `
 DROP TABLE IF EXISTS timeslots CASCADE;
 CREATE TABLE IF NOT EXISTS timeslots (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
   start_date DATE,
   start_time TIME,
   end_date DATE,
@@ -33,11 +32,14 @@ CREATE TABLE IF NOT EXISTS timeslots (
 `;
 
 export const insertTimeslots = `
-INSERT INTO timeslots(user_id, start_date, start_time, end_date, end_time, is_booked)
+INSERT INTO timeslots(start_date, start_time, end_date, end_time, is_booked)
 VALUES 
-  (1, '2024-10-09', '10:00', '2024-10-09', '11:00', true),
-  (2, '2024-10-09', '11:00', '2024-10-09', '12:00', true),
-  (3, '2024-10-09', '14:00', '2024-10-09', '15:00', true);
+  ('2024-10-09', '10:00', '2024-10-09', '11:00', true),
+  ('2024-10-09', '11:00', '2024-10-09', '12:00', true),
+  ('2024-10-09', '14:00', '2024-10-09', '15:00', true),
+  ('2024-10-10', '10:00', '2024-10-10', '11:00', false),
+  ('2024-10-10', '11:00', '2024-10-10', '12:00', false),
+  ('2024-10-10', '14:00', '2024-10-10', '15:00', false);
 `;
 
 export const dropTimeslotsTable = 'DROP TABLE IF EXISTS timeslots CASCADE;';

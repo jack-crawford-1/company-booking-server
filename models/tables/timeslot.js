@@ -12,7 +12,7 @@ class Timeslot {
     is_booked,
   }) {
     const query = `
-      INSERT INTO timeslots (start_date, start_time, end_date, end_time, is_booked)
+      INSERT INTO timeslots (id, start_date, start_time, end_date, end_time, is_booked)
       VALUES ($1, $2, $3, $4, $5)
       RETURNING id, start_date, start_time, end_date, end_time, is_booked;
     `;
